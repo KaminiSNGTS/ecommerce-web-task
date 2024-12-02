@@ -1,5 +1,3 @@
-// components/navbar/index.tsx
-
 import React from 'react';
 import { AppBar, Toolbar, Typography, IconButton, Badge } from '@mui/material';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
@@ -11,10 +9,11 @@ const Navbar: React.FC = () => {
     const { cartItems, wishlistItems } = useContext(CartContext);
 
     return (
-        <AppBar position="fixed" sx={{ bgcolor: 'blue',
-         top:0,
-         width: '100%',
-         }}>
+        <AppBar position="fixed" sx={{
+            bgcolor: 'blue',
+            top: 0,
+            width: '100%',
+        }}>
             <Toolbar>
                 <Typography variant="h6" sx={{ flexGrow: 1, color: 'white' }}>
                     <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
@@ -26,7 +25,7 @@ const Navbar: React.FC = () => {
                         <FaHeart />
                     </Badge>
                 </IconButton>
-                <IconButton sx={{ color: 'white' , ml:2}} >
+                <IconButton sx={{ color: 'white', ml: 2 }} >
                     <Link to="/cart" style={{ color: 'inherit', textDecoration: 'none' }}>
 
                         <Badge badgeContent={cartItems.length} color="error">

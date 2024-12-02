@@ -1,6 +1,5 @@
 import React, { createContext, useState, ReactNode } from 'react';
 
-// Define the types for Cart and Wishlist
 interface CartItem {
   id: number;
   name: string;
@@ -12,17 +11,15 @@ interface WishlistItem {
   id: number;
   name: string;
   price: number;
-  image: string; // Optional field for product image
+  image: string;
 }
 
 interface CartContextType {
-  // Cart-related state and methods
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
   removeFromCart: (id: number) => void;
   total: number;
 
-  // Wishlist-related state and methods
   wishlistItems: WishlistItem[];
   addToWishlist: (item: WishlistItem) => void;
   removeFromWishlist: (id: number) => void;
@@ -33,27 +30,22 @@ interface CartProviderProps {
   children: ReactNode;
 }
 
-// Create the context
 export const CartContext = createContext<CartContextType>({
   cartItems: [],
-  addToCart: () => {},
-  removeFromCart: () => {},
+  addToCart: () => { },
+  removeFromCart: () => { },
   total: 0,
   wishlistItems: [],
-  addToWishlist: () => {},
-  removeFromWishlist: () => {},
+  addToWishlist: () => { },
+  removeFromWishlist: () => { },
   isInWishlist: () => false,
 });
 
-// Create the provider component
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  // Cart state
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  // Wishlist state
   const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([]);
 
-  // Cart methods
   const addToCart = (item: CartItem) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((i) => i.id === item.id);
@@ -75,7 +67,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     0
   );
 
-  // Wishlist methods
   const addToWishlist = (item: WishlistItem) => {
     if (!wishlistItems.find((i) => i.id === item.id)) {
       setWishlistItems((prevItems) => [...prevItems, item]);
